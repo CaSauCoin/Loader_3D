@@ -206,6 +206,33 @@ Cube.cpp.s:
 	cd /home/banvien/eclipse-workspace/Loader_3D/build && $(MAKE) -f src/CMakeFiles/RubiksCube.dir/build.make src/CMakeFiles/RubiksCube.dir/Cube.cpp.s
 .PHONY : Cube.cpp.s
 
+Pyramid.o: Pyramid.cpp.o
+
+.PHONY : Pyramid.o
+
+# target to build an object file
+Pyramid.cpp.o:
+	cd /home/banvien/eclipse-workspace/Loader_3D/build && $(MAKE) -f src/CMakeFiles/RubiksCube.dir/build.make src/CMakeFiles/RubiksCube.dir/Pyramid.cpp.o
+.PHONY : Pyramid.cpp.o
+
+Pyramid.i: Pyramid.cpp.i
+
+.PHONY : Pyramid.i
+
+# target to preprocess a source file
+Pyramid.cpp.i:
+	cd /home/banvien/eclipse-workspace/Loader_3D/build && $(MAKE) -f src/CMakeFiles/RubiksCube.dir/build.make src/CMakeFiles/RubiksCube.dir/Pyramid.cpp.i
+.PHONY : Pyramid.cpp.i
+
+Pyramid.s: Pyramid.cpp.s
+
+.PHONY : Pyramid.s
+
+# target to generate assembly for a file
+Pyramid.cpp.s:
+	cd /home/banvien/eclipse-workspace/Loader_3D/build && $(MAKE) -f src/CMakeFiles/RubiksCube.dir/build.make src/CMakeFiles/RubiksCube.dir/Pyramid.cpp.s
+.PHONY : Pyramid.cpp.s
+
 Renderer.o: Renderer.cpp.o
 
 .PHONY : Renderer.o
@@ -467,6 +494,9 @@ help:
 	@echo "... Cube.o"
 	@echo "... Cube.i"
 	@echo "... Cube.s"
+	@echo "... Pyramid.o"
+	@echo "... Pyramid.i"
+	@echo "... Pyramid.s"
 	@echo "... Renderer.o"
 	@echo "... Renderer.i"
 	@echo "... Renderer.s"

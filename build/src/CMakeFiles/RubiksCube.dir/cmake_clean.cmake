@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/RubiksCube.dir/Application.cpp.o"
   "CMakeFiles/RubiksCube.dir/Controller.cpp.o"
   "CMakeFiles/RubiksCube.dir/Cube.cpp.o"
+  "CMakeFiles/RubiksCube.dir/Pyramid.cpp.o"
   "CMakeFiles/RubiksCube.dir/Renderer.cpp.o"
   "CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_glfw.cpp.o"
   "CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_opengl3.cpp.o"

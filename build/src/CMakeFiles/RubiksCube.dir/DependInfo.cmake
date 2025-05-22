@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/banvien/eclipse-workspace/Loader_3D/src/Application.cpp" "/home/banvien/eclipse-workspace/Loader_3D/build/src/CMakeFiles/RubiksCube.dir/Application.cpp.o"
   "/home/banvien/eclipse-workspace/Loader_3D/src/Controller.cpp" "/home/banvien/eclipse-workspace/Loader_3D/build/src/CMakeFiles/RubiksCube.dir/Controller.cpp.o"
   "/home/banvien/eclipse-workspace/Loader_3D/src/Cube.cpp" "/home/banvien/eclipse-workspace/Loader_3D/build/src/CMakeFiles/RubiksCube.dir/Cube.cpp.o"
+  "/home/banvien/eclipse-workspace/Loader_3D/src/Pyramid.cpp" "/home/banvien/eclipse-workspace/Loader_3D/build/src/CMakeFiles/RubiksCube.dir/Pyramid.cpp.o"
   "/home/banvien/eclipse-workspace/Loader_3D/src/Renderer.cpp" "/home/banvien/eclipse-workspace/Loader_3D/build/src/CMakeFiles/RubiksCube.dir/Renderer.cpp.o"
   "/home/banvien/eclipse-workspace/Loader_3D/imgui/backends/imgui_impl_glfw.cpp" "/home/banvien/eclipse-workspace/Loader_3D/build/src/CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_glfw.cpp.o"
   "/home/banvien/eclipse-workspace/Loader_3D/imgui/backends/imgui_impl_opengl3.cpp" "/home/banvien/eclipse-workspace/Loader_3D/build/src/CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_opengl3.cpp.o"

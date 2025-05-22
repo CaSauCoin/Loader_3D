@@ -8,23 +8,31 @@ src/CMakeFiles/RubiksCube.dir/Application.cpp.o: ../imgui/imgui.h
 src/CMakeFiles/RubiksCube.dir/Application.cpp.o: ../include/Application.hpp
 src/CMakeFiles/RubiksCube.dir/Application.cpp.o: ../include/Controller.hpp
 src/CMakeFiles/RubiksCube.dir/Application.cpp.o: ../include/Cube.hpp
+src/CMakeFiles/RubiksCube.dir/Application.cpp.o: ../include/Pyramid.hpp
 src/CMakeFiles/RubiksCube.dir/Application.cpp.o: ../include/Renderer.hpp
+src/CMakeFiles/RubiksCube.dir/Application.cpp.o: ../include/Shape.hpp
 src/CMakeFiles/RubiksCube.dir/Application.cpp.o: ../include/Vertex.hpp
 src/CMakeFiles/RubiksCube.dir/Application.cpp.o: ../src/Application.cpp
 
 src/CMakeFiles/RubiksCube.dir/Controller.cpp.o: ../imgui/imconfig.h
 src/CMakeFiles/RubiksCube.dir/Controller.cpp.o: ../imgui/imgui.h
 src/CMakeFiles/RubiksCube.dir/Controller.cpp.o: ../include/Controller.hpp
-src/CMakeFiles/RubiksCube.dir/Controller.cpp.o: ../include/Cube.hpp
+src/CMakeFiles/RubiksCube.dir/Controller.cpp.o: ../include/Shape.hpp
 src/CMakeFiles/RubiksCube.dir/Controller.cpp.o: ../include/Vertex.hpp
 src/CMakeFiles/RubiksCube.dir/Controller.cpp.o: ../src/Controller.cpp
 
 src/CMakeFiles/RubiksCube.dir/Cube.cpp.o: ../include/Cube.hpp
+src/CMakeFiles/RubiksCube.dir/Cube.cpp.o: ../include/Shape.hpp
 src/CMakeFiles/RubiksCube.dir/Cube.cpp.o: ../include/Vertex.hpp
 src/CMakeFiles/RubiksCube.dir/Cube.cpp.o: ../src/Cube.cpp
 
-src/CMakeFiles/RubiksCube.dir/Renderer.cpp.o: ../include/Cube.hpp
+src/CMakeFiles/RubiksCube.dir/Pyramid.cpp.o: ../include/Pyramid.hpp
+src/CMakeFiles/RubiksCube.dir/Pyramid.cpp.o: ../include/Shape.hpp
+src/CMakeFiles/RubiksCube.dir/Pyramid.cpp.o: ../include/Vertex.hpp
+src/CMakeFiles/RubiksCube.dir/Pyramid.cpp.o: ../src/Pyramid.cpp
+
 src/CMakeFiles/RubiksCube.dir/Renderer.cpp.o: ../include/Renderer.hpp
+src/CMakeFiles/RubiksCube.dir/Renderer.cpp.o: ../include/Shape.hpp
 src/CMakeFiles/RubiksCube.dir/Renderer.cpp.o: ../include/Vertex.hpp
 src/CMakeFiles/RubiksCube.dir/Renderer.cpp.o: ../src/Renderer.cpp
 
@@ -72,7 +80,9 @@ src/CMakeFiles/RubiksCube.dir/main.cpp.o: ../imgui/imgui.h
 src/CMakeFiles/RubiksCube.dir/main.cpp.o: ../include/Application.hpp
 src/CMakeFiles/RubiksCube.dir/main.cpp.o: ../include/Controller.hpp
 src/CMakeFiles/RubiksCube.dir/main.cpp.o: ../include/Cube.hpp
+src/CMakeFiles/RubiksCube.dir/main.cpp.o: ../include/Pyramid.hpp
 src/CMakeFiles/RubiksCube.dir/main.cpp.o: ../include/Renderer.hpp
+src/CMakeFiles/RubiksCube.dir/main.cpp.o: ../include/Shape.hpp
 src/CMakeFiles/RubiksCube.dir/main.cpp.o: ../include/Vertex.hpp
 src/CMakeFiles/RubiksCube.dir/main.cpp.o: ../src/main.cpp
 

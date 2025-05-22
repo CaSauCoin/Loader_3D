@@ -83,9 +83,22 @@ src/CMakeFiles/RubiksCube.dir/Cube.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RubiksCube.dir/Cube.cpp.s"
 	cd /home/banvien/eclipse-workspace/Loader_3D/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/banvien/eclipse-workspace/Loader_3D/src/Cube.cpp -o CMakeFiles/RubiksCube.dir/Cube.cpp.s
 
+src/CMakeFiles/RubiksCube.dir/Pyramid.cpp.o: src/CMakeFiles/RubiksCube.dir/flags.make
+src/CMakeFiles/RubiksCube.dir/Pyramid.cpp.o: ../src/Pyramid.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/RubiksCube.dir/Pyramid.cpp.o"
+	cd /home/banvien/eclipse-workspace/Loader_3D/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RubiksCube.dir/Pyramid.cpp.o -c /home/banvien/eclipse-workspace/Loader_3D/src/Pyramid.cpp
+
+src/CMakeFiles/RubiksCube.dir/Pyramid.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RubiksCube.dir/Pyramid.cpp.i"
+	cd /home/banvien/eclipse-workspace/Loader_3D/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/banvien/eclipse-workspace/Loader_3D/src/Pyramid.cpp > CMakeFiles/RubiksCube.dir/Pyramid.cpp.i
+
+src/CMakeFiles/RubiksCube.dir/Pyramid.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RubiksCube.dir/Pyramid.cpp.s"
+	cd /home/banvien/eclipse-workspace/Loader_3D/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/banvien/eclipse-workspace/Loader_3D/src/Pyramid.cpp -o CMakeFiles/RubiksCube.dir/Pyramid.cpp.s
+
 src/CMakeFiles/RubiksCube.dir/Renderer.cpp.o: src/CMakeFiles/RubiksCube.dir/flags.make
 src/CMakeFiles/RubiksCube.dir/Renderer.cpp.o: ../src/Renderer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/RubiksCube.dir/Renderer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/RubiksCube.dir/Renderer.cpp.o"
 	cd /home/banvien/eclipse-workspace/Loader_3D/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RubiksCube.dir/Renderer.cpp.o -c /home/banvien/eclipse-workspace/Loader_3D/src/Renderer.cpp
 
 src/CMakeFiles/RubiksCube.dir/Renderer.cpp.i: cmake_force
@@ -98,7 +111,7 @@ src/CMakeFiles/RubiksCube.dir/Renderer.cpp.s: cmake_force
 
 src/CMakeFiles/RubiksCube.dir/Controller.cpp.o: src/CMakeFiles/RubiksCube.dir/flags.make
 src/CMakeFiles/RubiksCube.dir/Controller.cpp.o: ../src/Controller.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/RubiksCube.dir/Controller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/RubiksCube.dir/Controller.cpp.o"
 	cd /home/banvien/eclipse-workspace/Loader_3D/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RubiksCube.dir/Controller.cpp.o -c /home/banvien/eclipse-workspace/Loader_3D/src/Controller.cpp
 
 src/CMakeFiles/RubiksCube.dir/Controller.cpp.i: cmake_force
@@ -111,7 +124,7 @@ src/CMakeFiles/RubiksCube.dir/Controller.cpp.s: cmake_force
 
 src/CMakeFiles/RubiksCube.dir/Application.cpp.o: src/CMakeFiles/RubiksCube.dir/flags.make
 src/CMakeFiles/RubiksCube.dir/Application.cpp.o: ../src/Application.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/RubiksCube.dir/Application.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/RubiksCube.dir/Application.cpp.o"
 	cd /home/banvien/eclipse-workspace/Loader_3D/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RubiksCube.dir/Application.cpp.o -c /home/banvien/eclipse-workspace/Loader_3D/src/Application.cpp
 
 src/CMakeFiles/RubiksCube.dir/Application.cpp.i: cmake_force
@@ -124,7 +137,7 @@ src/CMakeFiles/RubiksCube.dir/Application.cpp.s: cmake_force
 
 src/CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_glfw.cpp.o: src/CMakeFiles/RubiksCube.dir/flags.make
 src/CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_glfw.cpp.o: ../imgui/backends/imgui_impl_glfw.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_glfw.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_glfw.cpp.o"
 	cd /home/banvien/eclipse-workspace/Loader_3D/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_glfw.cpp.o -c /home/banvien/eclipse-workspace/Loader_3D/imgui/backends/imgui_impl_glfw.cpp
 
 src/CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_glfw.cpp.i: cmake_force
@@ -137,7 +150,7 @@ src/CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_glfw.cpp.s: cmake_for
 
 src/CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_opengl3.cpp.o: src/CMakeFiles/RubiksCube.dir/flags.make
 src/CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_opengl3.cpp.o: ../imgui/backends/imgui_impl_opengl3.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_opengl3.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_opengl3.cpp.o"
 	cd /home/banvien/eclipse-workspace/Loader_3D/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_opengl3.cpp.o -c /home/banvien/eclipse-workspace/Loader_3D/imgui/backends/imgui_impl_opengl3.cpp
 
 src/CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_opengl3.cpp.i: cmake_force
@@ -150,7 +163,7 @@ src/CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_opengl3.cpp.s: cmake_
 
 src/CMakeFiles/RubiksCube.dir/__/imgui/imgui.cpp.o: src/CMakeFiles/RubiksCube.dir/flags.make
 src/CMakeFiles/RubiksCube.dir/__/imgui/imgui.cpp.o: ../imgui/imgui.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/RubiksCube.dir/__/imgui/imgui.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/RubiksCube.dir/__/imgui/imgui.cpp.o"
 	cd /home/banvien/eclipse-workspace/Loader_3D/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RubiksCube.dir/__/imgui/imgui.cpp.o -c /home/banvien/eclipse-workspace/Loader_3D/imgui/imgui.cpp
 
 src/CMakeFiles/RubiksCube.dir/__/imgui/imgui.cpp.i: cmake_force
@@ -163,7 +176,7 @@ src/CMakeFiles/RubiksCube.dir/__/imgui/imgui.cpp.s: cmake_force
 
 src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_demo.cpp.o: src/CMakeFiles/RubiksCube.dir/flags.make
 src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_demo.cpp.o: ../imgui/imgui_demo.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_demo.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_demo.cpp.o"
 	cd /home/banvien/eclipse-workspace/Loader_3D/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RubiksCube.dir/__/imgui/imgui_demo.cpp.o -c /home/banvien/eclipse-workspace/Loader_3D/imgui/imgui_demo.cpp
 
 src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_demo.cpp.i: cmake_force
@@ -176,7 +189,7 @@ src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_demo.cpp.s: cmake_force
 
 src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_draw.cpp.o: src/CMakeFiles/RubiksCube.dir/flags.make
 src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_draw.cpp.o: ../imgui/imgui_draw.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_draw.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_draw.cpp.o"
 	cd /home/banvien/eclipse-workspace/Loader_3D/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RubiksCube.dir/__/imgui/imgui_draw.cpp.o -c /home/banvien/eclipse-workspace/Loader_3D/imgui/imgui_draw.cpp
 
 src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_draw.cpp.i: cmake_force
@@ -189,7 +202,7 @@ src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_draw.cpp.s: cmake_force
 
 src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_tables.cpp.o: src/CMakeFiles/RubiksCube.dir/flags.make
 src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_tables.cpp.o: ../imgui/imgui_tables.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_tables.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_tables.cpp.o"
 	cd /home/banvien/eclipse-workspace/Loader_3D/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RubiksCube.dir/__/imgui/imgui_tables.cpp.o -c /home/banvien/eclipse-workspace/Loader_3D/imgui/imgui_tables.cpp
 
 src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_tables.cpp.i: cmake_force
@@ -202,7 +215,7 @@ src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_tables.cpp.s: cmake_force
 
 src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_widgets.cpp.o: src/CMakeFiles/RubiksCube.dir/flags.make
 src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_widgets.cpp.o: ../imgui/imgui_widgets.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_widgets.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_widgets.cpp.o"
 	cd /home/banvien/eclipse-workspace/Loader_3D/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RubiksCube.dir/__/imgui/imgui_widgets.cpp.o -c /home/banvien/eclipse-workspace/Loader_3D/imgui/imgui_widgets.cpp
 
 src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_widgets.cpp.i: cmake_force
@@ -217,6 +230,7 @@ src/CMakeFiles/RubiksCube.dir/__/imgui/imgui_widgets.cpp.s: cmake_force
 RubiksCube_OBJECTS = \
 "CMakeFiles/RubiksCube.dir/main.cpp.o" \
 "CMakeFiles/RubiksCube.dir/Cube.cpp.o" \
+"CMakeFiles/RubiksCube.dir/Pyramid.cpp.o" \
 "CMakeFiles/RubiksCube.dir/Renderer.cpp.o" \
 "CMakeFiles/RubiksCube.dir/Controller.cpp.o" \
 "CMakeFiles/RubiksCube.dir/Application.cpp.o" \
@@ -233,6 +247,7 @@ RubiksCube_EXTERNAL_OBJECTS =
 
 src/RubiksCube: src/CMakeFiles/RubiksCube.dir/main.cpp.o
 src/RubiksCube: src/CMakeFiles/RubiksCube.dir/Cube.cpp.o
+src/RubiksCube: src/CMakeFiles/RubiksCube.dir/Pyramid.cpp.o
 src/RubiksCube: src/CMakeFiles/RubiksCube.dir/Renderer.cpp.o
 src/RubiksCube: src/CMakeFiles/RubiksCube.dir/Controller.cpp.o
 src/RubiksCube: src/CMakeFiles/RubiksCube.dir/Application.cpp.o
@@ -249,7 +264,7 @@ src/RubiksCube: /usr/lib/x86_64-linux-gnu/libGLU.so
 src/RubiksCube: /usr/lib/x86_64-linux-gnu/libGLEW.so
 src/RubiksCube: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
 src/RubiksCube: src/CMakeFiles/RubiksCube.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable RubiksCube"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/banvien/eclipse-workspace/Loader_3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable RubiksCube"
 	cd /home/banvien/eclipse-workspace/Loader_3D/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/RubiksCube.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

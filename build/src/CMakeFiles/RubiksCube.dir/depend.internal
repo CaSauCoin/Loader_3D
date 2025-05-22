@@ -9,23 +9,31 @@ src/CMakeFiles/RubiksCube.dir/Application.cpp.o
  ../include/Application.hpp
  ../include/Controller.hpp
  ../include/Cube.hpp
+ ../include/Pyramid.hpp
  ../include/Renderer.hpp
+ ../include/Shape.hpp
  ../include/Vertex.hpp
  /home/banvien/eclipse-workspace/Loader_3D/src/Application.cpp
 src/CMakeFiles/RubiksCube.dir/Controller.cpp.o
  ../imgui/imconfig.h
  ../imgui/imgui.h
  ../include/Controller.hpp
- ../include/Cube.hpp
+ ../include/Shape.hpp
  ../include/Vertex.hpp
  /home/banvien/eclipse-workspace/Loader_3D/src/Controller.cpp
 src/CMakeFiles/RubiksCube.dir/Cube.cpp.o
  ../include/Cube.hpp
+ ../include/Shape.hpp
  ../include/Vertex.hpp
  /home/banvien/eclipse-workspace/Loader_3D/src/Cube.cpp
+src/CMakeFiles/RubiksCube.dir/Pyramid.cpp.o
+ ../include/Pyramid.hpp
+ ../include/Shape.hpp
+ ../include/Vertex.hpp
+ /home/banvien/eclipse-workspace/Loader_3D/src/Pyramid.cpp
 src/CMakeFiles/RubiksCube.dir/Renderer.cpp.o
- ../include/Cube.hpp
  ../include/Renderer.hpp
+ ../include/Shape.hpp
  ../include/Vertex.hpp
  /home/banvien/eclipse-workspace/Loader_3D/src/Renderer.cpp
 src/CMakeFiles/RubiksCube.dir/__/imgui/backends/imgui_impl_glfw.cpp.o
@@ -73,6 +81,8 @@ src/CMakeFiles/RubiksCube.dir/main.cpp.o
  ../include/Application.hpp
  ../include/Controller.hpp
  ../include/Cube.hpp
+ ../include/Pyramid.hpp
  ../include/Renderer.hpp
+ ../include/Shape.hpp
  ../include/Vertex.hpp
  /home/banvien/eclipse-workspace/Loader_3D/src/main.cpp
