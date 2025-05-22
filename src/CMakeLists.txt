@@ -13,6 +13,19 @@ find_package(glfw3 3.3 REQUIRED)
 find_package(glm REQUIRED)
 find_package(GLEW REQUIRED)
 
+set(IMGUI_DIR ${CMAKE_SOURCE_DIR}/imgui)
+if(NOT EXISTS ${IMGUI_DIR}/imgui.h)
+    message(STATUS "imgui not found or empty. Cloning...")
+    execute_process(
+        COMMAND git clone https://github.com/ocornut/imgui.git ${IMGUI_DIR}
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        RESULT_VARIABLE GIT_RESULT
+    )
+    if(NOT GIT_RESULT EQUAL 0)
+        message(FATAL_ERROR "Failed to clone imgui")
+    endif()
+endif()
+
 file(GLOB IMGUI_SOURCES
     "${PROJECT_SOURCE_DIR}/imgui/*.cpp"
     "${PROJECT_SOURCE_DIR}/imgui/backends/imgui_impl_glfw.cpp"
