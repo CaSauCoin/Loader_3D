@@ -2,6 +2,7 @@
 set(SOURCES
     main.cpp
     Cube.cpp
+    Pyramid.cpp
     Renderer.cpp
     Controller.cpp
     Application.cpp

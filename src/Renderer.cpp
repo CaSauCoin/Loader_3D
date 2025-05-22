@@ -77,12 +77,12 @@ void Renderer::compileShaders() {
     glDeleteShader(fragmentShader);
 }
 
-void Renderer::setupBuffers(const Cube& cube) {
+void Renderer::setupBuffers(const Shape& shape) {
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, cube.getVertices().size() * sizeof(Vertex), cube.getVertices().data(), GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, shape.getVertices().size() * sizeof(Vertex), shape.getVertices().data(), GL_DYNAMIC_DRAW);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, cube.getIndices().size() * sizeof(unsigned int), cube.getIndices().data(), GL_DYNAMIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, shape.getIndices().size() * sizeof(unsigned int), shape.getIndices().data(), GL_DYNAMIC_DRAW);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, color));
@@ -93,7 +93,7 @@ void Renderer::setupBuffers(const Cube& cube) {
     glBindVertexArray(0);
 }
 
-void Renderer::render(const Cube& cube) {
+void Renderer::render(const Shape& shape) {
     int display_w, display_h;
     glfwGetFramebufferSize(window, &display_w, &display_h);
     glViewport(0, 0, display_w, display_h);
@@ -107,15 +107,15 @@ void Renderer::render(const Cube& cube) {
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "view"), 1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
     glUniform3f(glGetUniformLocation(shaderProgram, "viewPos"), 0.0f, 0.0f, 3.0f);
-    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "model"), 1, GL_FALSE, glm::value_ptr(cube.getModelMatrix()));
+    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "model"), 1, GL_FALSE, glm::value_ptr(shape.getModelMatrix()));
 
     glBindVertexArray(VAO);
-    if (cube.isFilled()) {
+    if (shape.isFilled()) {
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        glDrawElements(GL_TRIANGLES, cube.getIndices().size(), GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_TRIANGLES, shape.getIndices().size(), GL_UNSIGNED_INT, 0);
     } else {
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        glDrawElements(GL_LINES, cube.getIndices().size(), GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_LINES, shape.getIndices().size(), GL_UNSIGNED_INT, 0);
     }
     glBindVertexArray(0);
 }

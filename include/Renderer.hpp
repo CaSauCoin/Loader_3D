@@ -1,7 +1,7 @@
 #pragma once
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include "Cube.hpp"
+#include "Shape.hpp"
 
 class Renderer {
 private:
@@ -13,6 +13,6 @@ private:
 public:
     Renderer(GLFWwindow* win);
     ~Renderer();
-    void setupBuffers(const Cube& cube);
-    void render(const Cube& cube);
+    void setupBuffers(const Shape& shape);
+    void render(const Shape& shape);
 };

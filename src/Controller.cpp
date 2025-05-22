@@ -21,29 +21,42 @@ void Controller::handleMouseInput() {
         float sensitivity = 0.005f;
         glm::quat rotX = glm::angleAxis(-delta.y * sensitivity, glm::vec3(1.0f, 0.0f, 0.0f));
         glm::quat rotY = glm::angleAxis(-delta.x * sensitivity, glm::vec3(0.0f, 1.0f, 0.0f));
-        cube.applyRotation(rotY * rotX);
+        shape.applyRotation(rotY * rotX);
     }
 }
 
 void Controller::renderImGui() {
-    ImGui::Begin("Cube Controls");
-    ImGui::SliderFloat("Size", &cube.getSize(), 0.1f, 2.0f);
-    bool filled = cube.isFilled();
+    ImGui::Begin("Shape Controls");
+    ImGui::SliderFloat("Size", &shape.getSize(), 0.1f, 2.0f);
+    bool filled = shape.isFilled();
     ImGui::Checkbox("Filled", &filled);
-    if (filled != cube.isFilled()) {
-        cube.setFilled(filled); // Use setter
+    if (filled != shape.isFilled()) {
+        shape.setFilled(filled);
+    }
+    ImGui::Separator();
+    if (ImGui::Button(isCube ? "Switch to Pyramid" : "Switch to Cube")) {
+        std::cout << "Button pressed: Switching to " << (isCube ? "Pyramid" : "Cube") << "\n";
+        toggleShape = true;
+        isCube = !isCube;
     }
     ImGui::Separator();
     ImGui::Text("Face Colors");
-    ImGui::ColorEdit3("Front", &cube.getColors()[0].x);
-    ImGui::ColorEdit3("Back", &cube.getColors()[1].x);
-    ImGui::ColorEdit3("Right", &cube.getColors()[2].x);
-    ImGui::ColorEdit3("Left", &cube.getColors()[3].x);
-    ImGui::ColorEdit3("Top", &cube.getColors()[4].x);
-    ImGui::ColorEdit3("Bottom", &cube.getColors()[5].x);
+    if (isCube) {
+        ImGui::ColorEdit3("Front", &shape.getColors()[0].x);
+        ImGui::ColorEdit3("Back", &shape.getColors()[1].x);
+        ImGui::ColorEdit3("Right", &shape.getColors()[2].x);
+        ImGui::ColorEdit3("Left", &shape.getColors()[3].x);
+        ImGui::ColorEdit3("Top", &shape.getColors()[4].x);
+        ImGui::ColorEdit3("Bottom", &shape.getColors()[5].x);
+    } else {
+        ImGui::ColorEdit3("Base Face 1", &shape.getColors()[0].x);
+        ImGui::ColorEdit3("Base Face 2", &shape.getColors()[1].x);
+        ImGui::ColorEdit3("Side Face 1", &shape.getColors()[2].x);
+        ImGui::ColorEdit3("Side Face 2", &shape.getColors()[3].x);
+    }
     ImGui::Separator();
     if (ImGui::Button("Reset Rotation")) {
-        cube.resetRotation();
+        shape.resetRotation();
     }
     ImGui::End();
 }

@@ -1,5 +1,5 @@
-#include <GL/glew.h>
 #include "Application.hpp"
+#include <GL/glew.h>
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
@@ -46,16 +46,19 @@ Application::Application() {
     initImGui();
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
+    shape = new Cube();
     renderer = new Renderer(window);
-    controller = new Controller(window, cube);
-    cube.setupVertices();
-    renderer->setupBuffers(cube);
-    for (int i = 0; i < 6; ++i) {
-        prevColors[i] = cube.getColors()[i];
+    controller = new Controller(window, *shape);
+    shape->setupVertices();
+    renderer->setupBuffers(*shape);
+    std::cout << "Initialized Cube with " << shape->getVertices().size() << " vertices, " << shape->getIndices().size() << " indices\n";
+    for (int i = 0; i < prevColorCount; ++i) {
+        prevColors[i] = shape->getColors()[i];
     }
 }
 
 Application::~Application() {
+    delete shape;
     delete renderer;
     delete controller;
     ImGui_ImplOpenGL3_Shutdown();
@@ -72,25 +75,66 @@ void Application::run() {
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        controller->handleMouseInput();
-        controller->renderImGui();
+        if (controller) {
+            controller->handleMouseInput();
+            controller->renderImGui();
+        } else {
+            std::cerr << "Controller is null!\n";
+        }
 
-        bool needsUpdate = (cube.getSize() != prevSize || cube.isFilled() != prevFilled);
-        for (int i = 0; i < 6; ++i) {
-            if (cube.getColors()[i] != prevColors[i]) {
+        // Handle shape switching
+        if (controller && controller->shouldToggleShape()) {
+            std::cout << "Processing toggle: isCube = " << controller->isCubeShape() << "\n";
+            delete shape;
+            shape = controller->isCubeShape() ? static_cast<Shape*>(new Cube()) : static_cast<Shape*>(new Pyramid());
+            if (!shape) {
+                std::cerr << "Failed to create new shape!\n";
+                exit(-1);
+            }
+            prevIsCube = controller->isCubeShape();
+            prevColorCount = prevIsCube ? 6 : 4;
+            shape->setupVertices();
+            renderer->setupBuffers(*shape);
+            std::cout << "Switched to " << (prevIsCube ? "Cube" : "Pyramid") << " with "
+                      << shape->getVertices().size() << " vertices, "
+                      << shape->getIndices().size() << " indices\n";
+            prevSize = shape->getSize();
+            prevFilled = shape->isFilled();
+            for (int i = 0; i < prevColorCount; ++i) {
+                prevColors[i] = shape->getColors()[i];
+            }
+            delete controller;
+            controller = new Controller(window, *shape);
+            controller->setCubeShape(prevIsCube); // Ensure new controller has correct isCube
+            if (!controller) {
+                std::cerr << "Failed to create new controller!\n";
+                exit(-1);
+            }
+            controller->clearToggle(); // Clear toggle flag
+        }
+
+        // Check for changes in size, filled, or colors
+        bool needsUpdate = (shape->getSize() != prevSize || shape->isFilled() != prevFilled);
+        int colorCount = prevIsCube ? 6 : 4;
+        for (int i = 0; i < colorCount; ++i) {
+            if (shape->getColors()[i] != prevColors[i]) {
                 needsUpdate = true;
-                prevColors[i] = cube.getColors()[i];
+                prevColors[i] = shape->getColors()[i];
             }
         }
 
         if (needsUpdate) {
-            cube.setupVertices();
-            renderer->setupBuffers(cube);
-            prevSize = cube.getSize();
-            prevFilled = cube.isFilled();
+            shape->setupVertices();
+            renderer->setupBuffers(*shape);
+            prevSize = shape->getSize();
+            prevFilled = shape->isFilled();
         }
 
-        renderer->render(cube);
+        if (shape) {
+            renderer->render(*shape);
+        } else {
+            std::cerr << "Shape is null!\n";
+        }
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
         glfwSwapBuffers(window);
