@@ -48,8 +48,8 @@ void Renderer::compileShaders() {
         uniform float time;
         void main() {
             if (fillMode == 2) {
-                ivec2 stipple = ivec2(gl_FragCoord.xy) % 4;
-                if (stipple.x != 0 || stipple.y != 0) discard;
+                ivec2 stipple = ivec2(gl_FragCoord.xy) % 6;
+                if (stipple.x >= 1 || stipple.y >= 1) discard;
             }
             vec3 color = ourColor;
             if (useRainbow) {
@@ -115,7 +115,7 @@ void Renderer::render(const Shape& shape) {
 
     switch (backgroundMode) {
         case BackgroundMode::White:
-            glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+            glClearColor(0.9f, 0.9f, 1.0f, 0.9f);
             break;
         case BackgroundMode::Dark:
             glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
