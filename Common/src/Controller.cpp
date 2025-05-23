@@ -45,26 +45,30 @@ void Controller::renderImGui() {
         renderer.setBackgroundMode(static_cast<BackgroundMode>(currentBg));
     }
     ImGui::Separator();
-    if (ImGui::Button(isCube ? "Switch to Pyramid" : "Switch to Cube")) {
-        std::cout << "Button pressed: Switching to " << (isCube ? "Pyramid" : "Cube") << "\n";
+    const char* shapeLabel = (shapeType == 0) ? "Switch to Pyramid" : (shapeType == 1) ? "Switch to Globular" : "Switch to Cube";
+    if (ImGui::Button(shapeLabel)) {
+        std::cout << "Button pressed: Switching to " << ((shapeType == 0) ? "Pyramid" : (shapeType == 1) ? "Globular" : "Cube") << "\n";
         toggleShape = true;
-        isCube = !isCube;
+        shapeType = (shapeType + 1) % 3; // Cycle: Cube -> Pyramid -> Globular
     }
     ImGui::Separator();
     ImGui::Text("Face Colors");
     if (!renderer.getRainbowEffect()) {
-        if (isCube) {
+        int colorCount = (shapeType == 1) ? 4 : 6;
+        if (shapeType == 0) { // Cube
             ImGui::ColorEdit3("Front", &shape.getColors()[0].x);
             ImGui::ColorEdit3("Back", &shape.getColors()[1].x);
             ImGui::ColorEdit3("Right", &shape.getColors()[2].x);
             ImGui::ColorEdit3("Left", &shape.getColors()[3].x);
             ImGui::ColorEdit3("Top", &shape.getColors()[4].x);
             ImGui::ColorEdit3("Bottom", &shape.getColors()[5].x);
-        } else {
+        } else if (shapeType == 1) { // Pyramid
             ImGui::ColorEdit3("Base Face 1", &shape.getColors()[0].x);
             ImGui::ColorEdit3("Base Face 2", &shape.getColors()[1].x);
             ImGui::ColorEdit3("Side Face 1", &shape.getColors()[2].x);
             ImGui::ColorEdit3("Side Face 2", &shape.getColors()[3].x);
+        } else { // Globular
+            ImGui::ColorEdit3("Sphere Color", &shape.getColors()[0].x);
         }
     }
     ImGui::Separator();

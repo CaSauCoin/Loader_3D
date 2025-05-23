@@ -13,7 +13,7 @@ void Application::initGLFW() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    window = glfwCreateWindow(1280, 720, "ImGui Rubik's Cube Block", NULL, NULL);
+    window = glfwCreateWindow(1280, 720, "ImGui Loader Block 3D", NULL, NULL);
     if (!window) {
         glfwTerminate();
         std::cerr << "Failed to create GLFW window!" << std::endl;
@@ -85,18 +85,23 @@ void Application::run() {
         renderer->updateTime(static_cast<float>(glfwGetTime()));
 
         if (controller && controller->shouldToggleShape()) {
-            std::cout << "Processing toggle: isCube = " << controller->isCubeShape() << "\n";
+            std::cout << "Processing toggle: shapeType = " << controller->getShapeType() << "\n";
             delete shape;
-            shape = controller->isCubeShape() ? static_cast<Shape*>(new Cube()) : static_cast<Shape*>(new Pyramid());
+            switch (controller->getShapeType()) {
+                case 0: shape = static_cast<Shape*>(new Cube()); break;
+                case 1: shape = static_cast<Shape*>(new Pyramid()); break;
+                case 2: shape = static_cast<Shape*>(new Globular()); break;
+                default: shape = static_cast<Shape*>(new Cube());
+            }
             if (!shape) {
                 std::cerr << "Failed to create new shape!\n";
                 exit(-1);
             }
-            prevIsCube = controller->isCubeShape();
-            prevColorCount = prevIsCube ? 6 : 4;
+            prevShapeType = controller->getShapeType();
+            prevColorCount = (prevShapeType == 1) ? 4 : 6;
             shape->setupVertices();
             renderer->setupBuffers(*shape);
-            std::cout << "Switched to " << (prevIsCube ? "Cube" : "Pyramid") << " with "
+            std::cout << "Switched to " << (prevShapeType == 0 ? "Cube" : prevShapeType == 1 ? "Pyramid" : "Globular") << " with "
                       << shape->getVertices().size() << " vertices, "
                       << shape->getIndices().size() << " indices\n";
             prevSize = shape->getSize();
@@ -106,7 +111,7 @@ void Application::run() {
             }
             delete controller;
             controller = new Controller(window, *shape, *renderer);
-            controller->setCubeShape(prevIsCube);
+            controller->setShapeType(prevShapeType);
             if (!controller) {
                 std::cerr << "Failed to create new controller!\n";
                 exit(-1);
@@ -115,7 +120,7 @@ void Application::run() {
         }
 
         bool needsUpdate = (shape->getSize() != prevSize || shape->getFillMode() != prevFillMode);
-        int colorCount = prevIsCube ? 6 : 4;
+        int colorCount = (prevShapeType == 1) ? 4 : 6;
         for (int i = 0; i < colorCount; ++i) {
             if (shape->getColors()[i] != prevColors[i]) {
                 needsUpdate = true;

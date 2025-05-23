@@ -5,14 +5,13 @@ add_executable(Loader3D
 
 target_include_directories(Loader3D PRIVATE 
     ${CMAKE_SOURCE_DIR}/Common/include 
-    ${CMAKE_SOURCE_DIR}/Imgui 
-    ${CMAKE_SOURCE_DIR}/Imgui/backends 
 ) 
 
 target_link_libraries(Loader3D PRIVATE 
     Common 
     Cube 
     Pyramid 
+    Globular
     OpenGL::GL 
     GLEW::GLEW 
     glfw 

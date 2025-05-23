@@ -3,4 +3,4 @@ note lib Application.hpp when include lib (#include <GLFW/glfw3.h> in last impor
 mkdir build && cd build
 cmake ../
 make -j*
-./src/RubikCube
+./Src/Loader3D 

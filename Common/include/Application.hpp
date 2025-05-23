@@ -2,6 +2,7 @@
 #include "Shape.hpp"
 #include "Cube.hpp"
 #include "Pyramid.hpp"
+#include "Globular.hpp"
 #include "Renderer.hpp"
 #include "Controller.hpp"
 #include <glm/glm.hpp>
@@ -16,7 +17,7 @@ private:
     float prevSize = 1.0f;
     FillMode prevFillMode = FillMode::Solid;
     glm::vec3 prevColors[6];
-    bool prevIsCube = true;
+    int prevShapeType = 0;
     int prevColorCount = 6;
 
     void initGLFW();

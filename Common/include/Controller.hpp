@@ -11,15 +11,15 @@ private:
     Renderer& renderer;
     bool rotating = false;
     glm::vec2 lastMousePos;
-    bool isCube = true;
+    int shapeType = 0;
     bool toggleShape = false;
 
 public:
     Controller(GLFWwindow* win, Shape& s, Renderer& r) : window(win), shape(s), renderer(r) {}
     void handleMouseInput();
     void renderImGui();
-    bool isCubeShape() const { return isCube; }
+    int getShapeType() const { return shapeType; }
     bool shouldToggleShape() const { return toggleShape; }
     void clearToggle() { toggleShape = false; }
-    void setCubeShape(bool value) { isCube = value; }
+    void setShapeType(int type) { shapeType = type; }
 };

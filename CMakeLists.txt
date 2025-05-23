@@ -79,10 +79,9 @@ set(IMGUI_SOURCES
 include_directories( 
     ${CMAKE_SOURCE_DIR}/Block/Cube 
     ${CMAKE_SOURCE_DIR}/Block/Pyramid 
+    ${CMAKE_SOURCE_DIR}/Block/Globular
     ${CMAKE_SOURCE_DIR}/Common/include 
     ${CMAKE_SOURCE_DIR}/Utils/include 
-    ${PROJECT_SOURCE_DIR}/imgui 
-    ${PROJECT_SOURCE_DIR}/imgui/backends 
 )
 
 add_subdirectory(Block) 
