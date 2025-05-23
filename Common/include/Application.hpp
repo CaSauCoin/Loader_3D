@@ -4,8 +4,8 @@
 #include "Pyramid.hpp"
 #include "Renderer.hpp"
 #include "Controller.hpp"
-#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
+#include <GLFW/glfw3.h>
 
 class Application {
 private:

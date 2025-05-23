@@ -1,7 +1,7 @@
 #pragma once
+#include "Shape.hpp"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include "Shape.hpp"
 
 enum class BackgroundMode { White, Dark, Gray };
 
