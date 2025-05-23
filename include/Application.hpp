@@ -14,11 +14,11 @@ private:
     Renderer* renderer;
     Controller* controller;
     float prevSize = 1.0f;
-    bool prevFilled = true;
+    FillMode prevFillMode = FillMode::Solid;
     glm::vec3 prevColors[6];
     bool prevIsCube = true;
     int prevColorCount = 6;
-    
+
     void initGLFW();
     void initGLEW();
     void initImGui();

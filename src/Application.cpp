@@ -48,7 +48,7 @@ Application::Application() {
     glDepthFunc(GL_LESS);
     shape = new Cube();
     renderer = new Renderer(window);
-    controller = new Controller(window, *shape);
+    controller = new Controller(window, *shape, *renderer);
     shape->setupVertices();
     renderer->setupBuffers(*shape);
     std::cout << "Initialized Cube with " << shape->getVertices().size() << " vertices, " << shape->getIndices().size() << " indices\n";
@@ -82,7 +82,8 @@ void Application::run() {
             std::cerr << "Controller is null!\n";
         }
 
-        // Handle shape switching
+        renderer->updateTime(static_cast<float>(glfwGetTime()));
+
         if (controller && controller->shouldToggleShape()) {
             std::cout << "Processing toggle: isCube = " << controller->isCubeShape() << "\n";
             delete shape;
@@ -99,22 +100,21 @@ void Application::run() {
                       << shape->getVertices().size() << " vertices, "
                       << shape->getIndices().size() << " indices\n";
             prevSize = shape->getSize();
-            prevFilled = shape->isFilled();
+            prevFillMode = shape->getFillMode();
             for (int i = 0; i < prevColorCount; ++i) {
                 prevColors[i] = shape->getColors()[i];
             }
             delete controller;
-            controller = new Controller(window, *shape);
-            controller->setCubeShape(prevIsCube); // Ensure new controller has correct isCube
+            controller = new Controller(window, *shape, *renderer);
+            controller->setCubeShape(prevIsCube);
             if (!controller) {
                 std::cerr << "Failed to create new controller!\n";
                 exit(-1);
             }
-            controller->clearToggle(); // Clear toggle flag
+            controller->clearToggle();
         }
 
-        // Check for changes in size, filled, or colors
-        bool needsUpdate = (shape->getSize() != prevSize || shape->isFilled() != prevFilled);
+        bool needsUpdate = (shape->getSize() != prevSize || shape->getFillMode() != prevFillMode);
         int colorCount = prevIsCube ? 6 : 4;
         for (int i = 0; i < colorCount; ++i) {
             if (shape->getColors()[i] != prevColors[i]) {
@@ -127,7 +127,7 @@ void Application::run() {
             shape->setupVertices();
             renderer->setupBuffers(*shape);
             prevSize = shape->getSize();
-            prevFilled = shape->isFilled();
+            prevFillMode = shape->getFillMode();
         }
 
         if (shape) {

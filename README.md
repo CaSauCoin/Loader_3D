@@ -1,0 +1,1 @@
+note lib Application.hpp when include lib (#include <GLFW/glfw3.h> in last import)

@@ -7,7 +7,7 @@
 class Cube : public Shape {
 private:
     float size = 1.0f;
-    bool filled = true;
+    FillMode fillMode = FillMode::Solid;
     glm::vec3 colors[6] = {
         {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f},
         {1.0f, 1.0f, 0.0f}, {1.0f, 0.0f, 1.0f}, {0.0f, 1.0f, 1.0f}
@@ -20,8 +20,8 @@ public:
     void setupVertices() override;
     void resetRotation() override;
     float& getSize() override { return size; }
-    bool isFilled() const override { return filled; }
-    void setFilled(bool value) override { filled = value; }
+    FillMode getFillMode() const override { return fillMode; }
+    void setFillMode(FillMode mode) override { fillMode = mode; }
     glm::vec3* getColors() override { return colors; }
     const std::vector<Vertex>& getVertices() const override { return vertices; }
     const std::vector<unsigned int>& getIndices() const override { return indices; }

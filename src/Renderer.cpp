@@ -43,13 +43,28 @@ void Renderer::compileShaders() {
         out vec4 FragColor;
         uniform vec3 lightPos = vec3(1.0, 1.0, 2.0);
         uniform vec3 viewPos;
+        uniform int fillMode; // 0 = Solid, 1 = Wireframe, 2 = Dotted
+        uniform bool useRainbow;
+        uniform float time;
         void main() {
+            if (fillMode == 2) {
+                ivec2 stipple = ivec2(gl_FragCoord.xy) % 4;
+                if (stipple.x != 0 || stipple.y != 0) discard;
+            }
+            vec3 color = ourColor;
+            if (useRainbow) {
+                color = 0.5 + 0.5 * vec3(
+                    sin(time + gl_FragCoord.x * 0.01),
+                    sin(time + gl_FragCoord.x * 0.01 + 2.0),
+                    sin(time + gl_FragCoord.x * 0.01 + 4.0)
+                );
+            }
             float ambientStrength = 0.1;
-            vec3 ambient = ambientStrength * ourColor;
+            vec3 ambient = ambientStrength * color;
             vec3 norm = normalize(Normal);
             vec3 lightDir = normalize(lightPos - FragPos);
             float diff = max(dot(norm, lightDir), 0.0);
-            vec3 diffuse = diff * ourColor;
+            vec3 diffuse = diff * color;
             float specularStrength = 0.5;
             vec3 viewDir = normalize(viewPos - FragPos);
             vec3 reflectDir = reflect(-lightDir, norm);
@@ -97,7 +112,18 @@ void Renderer::render(const Shape& shape) {
     int display_w, display_h;
     glfwGetFramebufferSize(window, &display_w, &display_h);
     glViewport(0, 0, display_w, display_h);
-    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+    switch (backgroundMode) {
+        case BackgroundMode::White:
+            glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+            break;
+        case BackgroundMode::Dark:
+            glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+            break;
+        case BackgroundMode::Gray:
+            glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+            break;
+    }
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -109,13 +135,18 @@ void Renderer::render(const Shape& shape) {
     glUniform3f(glGetUniformLocation(shaderProgram, "viewPos"), 0.0f, 0.0f, 3.0f);
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "model"), 1, GL_FALSE, glm::value_ptr(shape.getModelMatrix()));
 
+    int fillModeInt = static_cast<int>(shape.getFillMode());
+    glUniform1i(glGetUniformLocation(shaderProgram, "fillMode"), fillModeInt);
+    glUniform1i(glGetUniformLocation(shaderProgram, "useRainbow"), useRainbowEffect ? 1 : 0);
+    glUniform1f(glGetUniformLocation(shaderProgram, "time"), currentTime);
+
     glBindVertexArray(VAO);
-    if (shape.isFilled()) {
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        glDrawElements(GL_TRIANGLES, shape.getIndices().size(), GL_UNSIGNED_INT, 0);
-    } else {
+    if (shape.getFillMode() == FillMode::Wireframe) {
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glDrawElements(GL_LINES, shape.getIndices().size(), GL_UNSIGNED_INT, 0);
+    } else {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        glDrawElements(GL_TRIANGLES, shape.getIndices().size(), GL_UNSIGNED_INT, 0);
     }
     glBindVertexArray(0);
 }

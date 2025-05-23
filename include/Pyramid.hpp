@@ -7,12 +7,10 @@
 class Pyramid : public Shape {
 private:
     float size = 1.0f;
-    bool filled = true;
+    FillMode fillMode = FillMode::Solid;
     glm::vec3 colors[4] = {
-        {1.0f, 0.0f, 0.0f}, // Base face 1 - red
-        {0.0f, 1.0f, 0.0f}, // Base face 2 - green
-        {0.0f, 0.0f, 1.0f}, // Side face 1 - blue
-        {1.0f, 1.0f, 0.0f}  // Side face 2 - yellow
+        {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f},
+        {0.0f, 0.0f, 1.0f}, {1.0f, 1.0f, 0.0f}
     };
     glm::quat rotation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f);
     std::vector<Vertex> vertices;
@@ -22,8 +20,8 @@ public:
     void setupVertices() override;
     void resetRotation() override;
     float& getSize() override { return size; }
-    bool isFilled() const override { return filled; }
-    void setFilled(bool value) override { filled = value; }
+    FillMode getFillMode() const override { return fillMode; }
+    void setFillMode(FillMode mode) override { fillMode = mode; }
     glm::vec3* getColors() override { return colors; }
     const std::vector<Vertex>& getVertices() const override { return vertices; }
     const std::vector<unsigned int>& getIndices() const override { return indices; }

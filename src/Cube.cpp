@@ -18,7 +18,22 @@ void Cube::setupVertices() {
     vertices.clear();
     indices.clear();
 
-    if (filled) {
+    if (fillMode == FillMode::Wireframe) {
+        for (int face = 0; face < 6; ++face) {
+            int baseIndex = vertices.size();
+            for (int i = 0; i < 4; ++i) {
+                Vertex v;
+                v.position = positions[faces[face][i]];
+                v.color = colors[face];
+                v.normal = normals[face];
+                vertices.push_back(v);
+            }
+            for (int i = 0; i < 4; ++i) {
+                indices.push_back(baseIndex + i);
+                indices.push_back(baseIndex + (i + 1) % 4);
+            }
+        }
+    } else { // Solid or Dotted (both use triangles)
         for (int face = 0; face < 6; ++face) {
             int baseIndex = vertices.size();
             for (int i = 0; i < 4; ++i) {
@@ -34,21 +49,6 @@ void Cube::setupVertices() {
             indices.push_back(baseIndex);
             indices.push_back(baseIndex + 2);
             indices.push_back(baseIndex + 3);
-        }
-    } else {
-        for (int face = 0; face < 6; ++face) {
-            int baseIndex = vertices.size();
-            for (int i = 0; i < 4; ++i) {
-                Vertex v;
-                v.position = positions[faces[face][i]];
-                v.color = colors[face];
-                v.normal = normals[face];
-                vertices.push_back(v);
-            }
-            for (int i = 0; i < 4; ++i) {
-                indices.push_back(baseIndex + i);
-                indices.push_back(baseIndex + (i + 1) % 4);
-            }
         }
     }
 }
