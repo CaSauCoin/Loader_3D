@@ -9,9 +9,9 @@ set(SOURCES
 )
 
 find_package(OpenGL REQUIRED)
-find_package(glfw3 3.3 REQUIRED)
-find_package(glm REQUIRED)
-find_package(GLEW REQUIRED)
+# find_package(glfw3 3.3 REQUIRED)
+# find_package(glm REQUIRED)
+# find_package(GLEW REQUIRED)
 
 set(IMGUI_DIR ${CMAKE_SOURCE_DIR}/imgui)
 if(NOT EXISTS ${IMGUI_DIR}/imgui.h)
@@ -65,7 +65,7 @@ endfunction()
 if(IS_LINUX)
     install_package("libglfw3dev" glfw3)
     install_package("libglewdev" GLEW)
-    install_package("libglmdev" glm)
+    install_package("libglm-dev" glm)
 endif()
 
 if(IS_MACOS)
