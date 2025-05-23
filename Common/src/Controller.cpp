@@ -23,10 +23,49 @@ void Controller::handleMouseInput() {
         glm::quat rotY = glm::angleAxis(-delta.x * sensitivity, glm::vec3(0.0f, 1.0f, 0.0f));
         shape.applyRotation(rotY * rotX);
     }
+
+    if (autoRotate) {
+        float angle = static_cast<float>(glfwGetTime()) * rotateSpeed;
+        glm::quat rotY = glm::angleAxis(angle, glm::vec3(0.0f, 1.0f, 0.0f));
+        shape.applyRotation(rotY);
+    }
 }
 
 void Controller::renderImGui() {
     ImGui::Begin("Shape Controls");
+
+    int display_w, display_h;
+    glfwGetFramebufferSize(window, &display_w, &display_h);
+
+    ImVec2 pos = ImGui::GetWindowPos();
+    ImVec2 size = ImGui::GetWindowSize();
+
+    float maxWidth = static_cast<float>(display_w);
+    float maxHeight = static_cast<float>(display_h);
+    if (size.x > maxWidth) size.x = maxWidth;
+    if (size.y > maxHeight) size.y = maxHeight;
+    ImGui::SetWindowSize(ImVec2(size.x, size.y));
+
+    if (ImGui::IsWindowHovered() && ImGui::IsMouseDragging(ImGuiMouseButton_Left)) {
+        ImVec2 newPos = pos;
+        if (pos.x < snapThreshold && pos.x >= 0) {
+            newPos.x = 0;
+        }
+        else if (pos.x + size.x > display_w - snapThreshold && pos.x + size.x <= display_w) {
+            newPos.x = display_w - size.x;
+        }
+        if (pos.y < snapThreshold && pos.y >= 0) {
+            newPos.y = 0;
+        }
+        else if (pos.y + size.y > display_h - snapThreshold && pos.y + size.y <= display_h) {
+            newPos.y = display_h - size.y;
+        }
+        newPos.x = glm::clamp(newPos.x, 0.0f, maxWidth - size.x);
+        newPos.y = glm::clamp(newPos.y, 0.0f, maxHeight - size.y);
+        
+        ImGui::SetWindowPos(newPos);
+    }
+
     ImGui::SliderFloat("Size", &shape.getSize(), 0.1f, 2.0f);
     const char* fillItems[] = { "Solid", "Wireframe", "Dotted" };
     int currentFill = static_cast<int>(shape.getFillMode());
@@ -71,9 +110,20 @@ void Controller::renderImGui() {
             ImGui::ColorEdit3("Sphere Color", &shape.getColors()[0].x);
         }
     }
+
+    ImGui::Separator();
+    const char* rotateLabel = autoRotate ? "Stop Auto Rotate Y" : "Start Auto Rotate Y";
+    if (ImGui::Button(rotateLabel)) {
+        setAutoRotate(!autoRotate);
+    }
+
+    ImGui::Separator();
+    ImGui::SliderFloat("Rotation Speed", &rotateSpeed, 0.00f, 0.015f, "%.4f rad/s");
+
     ImGui::Separator();
     if (ImGui::Button("Reset Rotation")) {
         shape.resetRotation();
     }
+
     ImGui::End();
 }

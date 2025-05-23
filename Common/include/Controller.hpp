@@ -13,6 +13,9 @@ private:
     glm::vec2 lastMousePos;
     int shapeType = 0;
     bool toggleShape = false;
+    bool autoRotate = false; 
+    float rotateSpeed = 0.0075f;
+    float snapThreshold = 20.0f;
 
 public:
     Controller(GLFWwindow* win, Shape& s, Renderer& r) : window(win), shape(s), renderer(r) {}
@@ -22,4 +25,8 @@ public:
     bool shouldToggleShape() const { return toggleShape; }
     void clearToggle() { toggleShape = false; }
     void setShapeType(int type) { shapeType = type; }
+    bool getAutoRotate() const { return autoRotate; }
+    void setAutoRotate(bool value) { autoRotate = value; }
+    float getRotateSpeed() const { return rotateSpeed; }
+    void setRotateSpeed(float speed) { rotateSpeed = speed; }
 };
