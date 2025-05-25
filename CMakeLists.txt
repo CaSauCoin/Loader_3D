@@ -41,8 +41,9 @@ function(install_package pkg cmake_package)
 endfunction()
 
 if(IS_LINUX)
-    install_package("libglfw3dev" glfw3)
-    install_package("libglewdev" GLEW)
+    install_package("libgl1-mesa-dev" OpenGL)
+    install_package("libglfw3-dev" glfw3)
+    install_package("libglew-dev" GLEW)
     install_package("libglm-dev" glm)
 endif()
 
@@ -56,7 +57,8 @@ set(IMGUI_DIR ${CMAKE_SOURCE_DIR}/imgui)
 if(NOT EXISTS ${IMGUI_DIR}/imgui.h)
     message(STATUS "imgui not found or empty. Cloning...")
     execute_process(
-        COMMAND git clone https://github.com/ocornut/imgui.git ${IMGUI_DIR}
+        COMMAND python3 ${CMAKE_SOURCE_DIR}/Scripts/git_clone.py
+                    https://github.com/ocornut/imgui.git ${IMGUI_DIR}
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
         RESULT_VARIABLE GIT_RESULT
     )
