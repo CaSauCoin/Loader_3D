@@ -2,6 +2,7 @@ add_library(Common STATIC
     src/Application.cpp 
     src/Renderer.cpp 
     src/Controller.cpp 
+    src/CoordinateSystem.cpp
 ) 
 
 target_include_directories(Common PUBLIC 
