@@ -48,16 +48,19 @@ void Renderer::compileShaders() {
         uniform float time;
         void main() {
             if (fillMode == 2) {
-                ivec2 stipple = ivec2(gl_FragCoord.xy) % 6;
-                if (stipple.x >= 1 || stipple.y >= 1) discard;
+                ivec2 stipple = ivec2(gl_FragCoord.xy) % 8;
+                if (stipple.x >= 2 || stipple.y >= 2) discard;
             }
             vec3 color = ourColor;
             if (useRainbow) {
-                color = 0.5 + 0.5 * vec3(
-                    sin(time + gl_FragCoord.x * 0.01),
-                    sin(time + gl_FragCoord.x * 0.01 + 2.0),
-                    sin(time + gl_FragCoord.x * 0.01 + 4.0)
-                );
+                float t = time + gl_FragCoord.x * 0.02;
+                float band = floor(mod(t * 0.5, 6.0));
+                if (band < 1.0) color = vec3(1.0, 0.0, 0.0);
+                else if (band < 2.0) color = vec3(1.0, 0.5, 0.0);
+                else if (band < 3.0) color = vec3(1.0, 1.0, 0.0);
+                else if (band < 4.0) color = vec3(0.0, 1.0, 0.0);
+                else if (band < 5.0) color = vec3(0.0, 0.0, 1.0);
+                else color = vec3(1.0, 0.0, 1.0);
             }
             float ambientStrength = 0.1;
             vec3 ambient = ambientStrength * color;
@@ -115,7 +118,7 @@ void Renderer::render(const Shape& shape) {
 
     switch (backgroundMode) {
         case BackgroundMode::White:
-            glClearColor(0.9f, 0.9f, 1.0f, 0.9f);
+            glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
             break;
         case BackgroundMode::Dark:
             glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
@@ -129,11 +132,19 @@ void Renderer::render(const Shape& shape) {
     glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
     glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)display_w / (float)display_h, 0.1f, 100.0f);
 
+    // Render Oxyz coordinate system as a background layer
+    if (coordSystemMode) {
+        glDepthFunc(GL_LEQUAL); // Ensure Oxyz is visible
+        coordinateSystem.render(display_w, display_h, view, projection);
+        glDepthFunc(GL_LESS);
+    }
+
     glUseProgram(shaderProgram);
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "view"), 1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
     glUniform3f(glGetUniformLocation(shaderProgram, "viewPos"), 0.0f, 0.0f, 3.0f);
-    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "model"), 1, GL_FALSE, glm::value_ptr(shape.getModelMatrix()));
+    glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(1.0f, 1.0f, 1.0f)) * glm::mat4_cast(getOxyzRotation()) * shape.getModelMatrix();
+    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "model"), 1, GL_FALSE, glm::value_ptr(model));
 
     int fillModeInt = static_cast<int>(shape.getFillMode());
     glUniform1i(glGetUniformLocation(shaderProgram, "fillMode"), fillModeInt);
@@ -149,4 +160,10 @@ void Renderer::render(const Shape& shape) {
         glDrawElements(GL_TRIANGLES, shape.getIndices().size(), GL_UNSIGNED_INT, 0);
     }
     glBindVertexArray(0);
+
+    // Check for OpenGL errors
+    GLenum err;
+    while ((err = glGetError()) != GL_NO_ERROR) {
+        std::cerr << "OpenGL error: " << err << "\n";
+    }
 }

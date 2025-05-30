@@ -3,6 +3,7 @@ project(Loader3D)
 
 set(CMAKE_CXX_STANDARD 17)
 
+set(OpenGL_GL_PREFERENCE GLVND)
 find_package(OpenGL REQUIRED)
 
 if(UNIX AND NOT APPLE) 
@@ -41,9 +42,8 @@ function(install_package pkg cmake_package)
 endfunction()
 
 if(IS_LINUX)
-    install_package("libgl1-mesa-dev" OpenGL)
-    install_package("libglfw3-dev" glfw3)
-    install_package("libglew-dev" GLEW)
+    install_package("libglfw3dev" glfw3)
+    install_package("libglewdev" GLEW)
     install_package("libglm-dev" glm)
 endif()
 
@@ -78,13 +78,27 @@ set(IMGUI_SOURCES
     CACHE INTERNAL "ImGui source files"
     )
 
+find_path(GLM_INCLUDE_DIR glm/glm.hpp)
+
+if(DEFINED ENV{GLM_INCLUDE_DIR})
+    set(GLM_INCLUDE_DIR $ENV{GLM_INCLUDE_DIR})
+endif()
+
+if(NOT GLM_INCLUDE_DIR)
+    message(FATAL_ERROR "GLM not found. Set GLM_INCLUDE_DIR environment variable.")
+else()
+    message(STATUS "Found GLM at ${GLM_INCLUDE_DIR}")
+endif()
+
+include_directories(${GLM_INCLUDE_DIR})
+
 include_directories( 
     ${CMAKE_SOURCE_DIR}/Block/Cube 
     ${CMAKE_SOURCE_DIR}/Block/Pyramid 
     ${CMAKE_SOURCE_DIR}/Block/Globular
     ${CMAKE_SOURCE_DIR}/Common/include 
-    ${CMAKE_SOURCE_DIR}/Utils/include 
-)
+    ${CMAKE_SOURCE_DIR}/Utils/include     
+    )
 
 add_subdirectory(Block) 
 add_subdirectory(Common) 
